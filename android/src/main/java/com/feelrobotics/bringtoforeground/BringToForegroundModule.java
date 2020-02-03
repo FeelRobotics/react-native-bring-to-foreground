@@ -1,9 +1,20 @@
 package com.feelrobotics.bringtoforeground;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
+
+import android.app.Activity;
+import android.app.KeyguardManager;
+import android.os.PowerManager;
+import android.view.WindowManager;
+
+import static android.content.Context.POWER_SERVICE;
 
 public class BringToForegroundModule extends ReactContextBaseJavaModule {
 
@@ -45,18 +56,17 @@ public class BringToForegroundModule extends ReactContextBaseJavaModule {
         screenLock.acquire();
 
         screenLock.release();
-        KeyguardManager km = (KeyguardManager) getReactApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);
-        // final KeyguardManager.KeyguardLock kl = km.newKeyguardLock("MyKeyguardLock");
-        // kl.disableKeyguard();
+        final KeyguardManager km = (KeyguardManager) getReactApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);
 
         if (km.isDeviceLocked()) {
-            mKeyguardManager.requestDismissKeyguard(this, new KeyguardManager.KeyguardDismissCallback() {
-                @Override
-                public void onDismissSucceeded() {
-                    super.onDismissSucceeded();
-                    launch(param);
-                }
-            });
+            new android.os.Handler().postDelayed(
+              new Runnable() {
+                  public void run() {
+                    final Activity activity = getCurrentActivity();
+                    km.requestDismissKeyguard(activity, null);
+                  }
+              },
+            1000);
         } else {
             launch(param);
         }
