@@ -1,6 +1,6 @@
 # react-native-bring-to-foreground
 
-React Native library to bring the application running in the background to foreground.
+React Native library to bring Android application running in the background to foreground.
 If the screen is locked, the lock screen shows up first.
 
 ## Getting started

@@ -1,7 +1,7 @@
 {
   "name": "react-native-bring-to-foreground",
   "title": "React Native Bring To Foreground",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-bring-to-foreground.git",
-    "baseUrl": "https://github.com/github_account/react-native-bring-to-foreground"
+    "url": "git+https://github.com/FeelRobotics/react-native-bring-to-foreground.git",
+    "baseUrl": "https://github.com/FeelRobotics/react-native-bring-to-foreground"
   },
   "keywords": [
     "react-native"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
+    "name": "Feel Robotics",
+    "email": "devteam@kiiroo.com"
   },
   "license": "Apache-2.0",
   "licenseFilename": "LICENSE",
