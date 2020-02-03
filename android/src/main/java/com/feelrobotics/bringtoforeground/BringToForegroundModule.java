@@ -53,11 +53,8 @@ public class BringToForegroundModule extends ReactContextBaseJavaModule {
                 .getSystemService(POWER_SERVICE)).newWakeLock(
                 PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP,
                 "LAUNCHAPP:");
-        screenLock.acquire();
 
-        screenLock.release();
         final KeyguardManager km = (KeyguardManager) getReactApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);
-
         if (km.isDeviceLocked()) {
             new android.os.Handler().postDelayed(
               new Runnable() {
@@ -67,9 +64,8 @@ public class BringToForegroundModule extends ReactContextBaseJavaModule {
                   }
               },
             1000);
-        } else {
-            launch(param);
         }
+        launch(param);
     }
 
     @ReactMethod
